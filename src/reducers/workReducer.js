@@ -1,30 +1,77 @@
+import { REMOVE_WORKER_FROM_WORKS } from "../actions/removeWorkerFromWork";
+
 const initialState = {
   'works': [
     {
+      'id': 1,
       'company': 'Amazón',
-      'Salary': 30000,
-      'diference': 0,
-      'name': 'Felipe'
+      'workers': [
+        {
+          'id': 1,
+          'name': 'George',
+          'profession': 'Ing. Sistemas',
+          'salary': 10500
+        },
+        {
+          'id': 2,
+          'name': 'John',
+          'profession': 'SCRUM',
+          'salary': 13500
+        }
+      ]
     },
     {
+      'id': 2,
       'company': 'Pizza hot',
-      'Salary': 6000,
-      'diference': 0,
-      'name': 'Enrique'
+      'workers': [
+        {
+          'id': 3,
+          'name': 'Enrique',
+          'profession': 'Ing. Sistemas',
+          'salary': 10500
+        }
+      ]
     },
     {
+      'id': 3,
       'company': 'GFT',
-      'Salary': 20000,
-      'diference': 0,
-      'name': 'Alberto'
+      'workers': [
+        {
+          'id': 4,
+          'name': 'Margarita',
+          'profession': 'Desarrollador front',
+          'salary': 294821
+        },
+        {
+          'id': 5,
+          'name': 'Luis',
+          'profession': 'Desarrollador back',
+          'salary': 294821
+        },
+        {
+          'id': 6,
+          'name': 'Alberto',
+          'profession': 'SCRUM',
+          'salary': 294821
+        }
+      ]
     }
-  ],
-  'vacants': []
+  ]
 }
 
 const workReducer = (state = initialState, action) => {
-  console.log(action);
-  return { ...state };
+  const copyState = { ...state };
+  switch (action.type) {
+    case REMOVE_WORKER_FROM_WORKS:
+      copyState.works = state.works.map(work => {
+        if (work.id === action.payload.company.id) {
+          work.workers = work.workers.filter(e => e.id !== action.payload.worker.id);
+        }
+        return work;
+      })
+      break;
+  }
+  return copyState;
 }
 
 export default workReducer;

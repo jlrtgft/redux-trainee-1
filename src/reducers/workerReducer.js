@@ -29,7 +29,6 @@ const initialState = {
 }
 
 const workerReducer = (state = initialState, action) => {
-  console.log(action);
   return { ...state };
 }
 

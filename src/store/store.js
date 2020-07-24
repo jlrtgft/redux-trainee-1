@@ -5,7 +5,7 @@ import workReducer from "../reducers/workReducer";
 
 const rootReducers = combineReducers({
   workers: workerReducer,
-  work: workReducer
+  works: workReducer
 });
 
 const store = createStore(rootReducers);
