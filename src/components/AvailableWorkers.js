@@ -15,7 +15,8 @@ class AvailableWorkers extends Component {
 
   handlePrint() {
     if (this.state.value) {
-      console.log(this.state.value);
+      this.setState({ value: 1 });
+      // console.log(this.state.value);
     }
   }
 
@@ -41,7 +42,10 @@ class AvailableWorkers extends Component {
                     ))
                   }
                 </select>
-                <button onClick={() => { this.props.callAddToCompany(this.state.value, worker) }}>Ok</button>
+                <button onClick={() => {
+                  this.handlePrint();
+                  this.props.callAddToCompany(this.state.value, worker);
+                }}>Ok</button>
               </li>
             ))
           }
@@ -49,9 +53,8 @@ class AvailableWorkers extends Component {
       </section >
     );
   }
-
+  //this.props.callAddToCompany(this.state.value, worker)
 }
-
 const propertiesToPropertiesMapper = state => {
   return {
     workers: state.workers.workers,
