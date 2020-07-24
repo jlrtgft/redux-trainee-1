@@ -1,4 +1,4 @@
-import { REMOVE_WORKER_FROM_WORKS } from "../actions/removeWorkerFromWork";
+import { REMOVE_WORKER_FROM_WORKS, ADD_TO_COMPANY } from "../actions/removeWorkerFromWork";
 
 const initialState = {
   'works': [
@@ -63,9 +63,17 @@ const workReducer = (state = initialState, action) => {
   const copyState = { ...state };
   switch (action.type) {
     case REMOVE_WORKER_FROM_WORKS:
-      copyState.works = state.works.map(work => {
+      copyState.works = copyState.works.map(work => {
         if (work.id === action.payload.company.id) {
           work.workers = work.workers.filter(e => e.id !== action.payload.worker.id);
+        }
+        return work;
+      })
+      break;
+    case ADD_TO_COMPANY:
+      copyState.works = copyState.works.map(work => {
+        if (work.id === action.payload.companyKey) {
+          work.workers = work.workers.concat(action.payload.worker);
         }
         return work;
       })
