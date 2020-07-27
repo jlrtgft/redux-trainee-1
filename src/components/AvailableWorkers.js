@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCompany } from '../actions/removeWorkerFromCompany';
+import Worker from './Worker';
+import { deleteWorker } from '../actions/deleteWorker';
 
 class AvailableWorkers extends Component {
 
@@ -16,12 +18,16 @@ class AvailableWorkers extends Component {
   handlePrint() {
     if (this.state.value) {
       this.setState({ value: 1 });
-      // console.log(this.state.value);
     }
   }
 
   handleChange(e) {
     this.setState({ value: e.target.value });
+  }
+
+  sendCompany(worker) {
+    this.handlePrint();
+    this.props.callAddToCompany(this.state.value, worker);
   }
 
   render() {
@@ -32,9 +38,11 @@ class AvailableWorkers extends Component {
           {
             this.props.workers.map(worker => (
               <li key={worker.id}>
-                <p>Nombre: {worker.name}</p>
-                <p>Profesión: {worker.profession}</p>
-                <p>Salario: {worker.salary}</p>
+                <Worker
+                  name={worker.name}
+                  profession={worker.profession}
+                  salary={worker.salary} />
+                <button onClick={() => this.props.callDeleteWorker(worker.id)}>X</button>
                 <select onChange={this.handleChange}>
                   {
                     this.props.companies.map(e => (
@@ -42,10 +50,7 @@ class AvailableWorkers extends Component {
                     ))
                   }
                 </select>
-                <button onClick={() => {
-                  this.handlePrint();
-                  this.props.callAddToCompany(this.state.value, worker);
-                }}>Ok</button>
+                <button onClick={() => this.sendCompany(worker)}>Ok</button>
               </li>
             ))
           }
@@ -54,6 +59,7 @@ class AvailableWorkers extends Component {
     );
   }
 }
+
 const propertiesToPropertiesMapper = state => {
   return {
     workers: state.workers.workers,
@@ -63,7 +69,8 @@ const propertiesToPropertiesMapper = state => {
 
 const dispatchToPropertiesMapper = dispatch => {
   return {
-    callAddToCompany: (company, worker) => dispatch(addToCompany(company, worker))
+    callAddToCompany: (company, worker) => dispatch(addToCompany(company, worker)),
+    callDeleteWorker: workerId => dispatch(deleteWorker(workerId))
   }
 }
 export default connect(propertiesToPropertiesMapper, dispatchToPropertiesMapper)(AvailableWorkers);

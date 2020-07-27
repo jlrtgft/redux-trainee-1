@@ -84,7 +84,12 @@ const companyReducer = (state = initialState, action) => {
       copyState.companies = copyState.companies.concat(action.payload);
       break;
     case DEL_COMPANY:
-      console.log(action);
+      copyState.companies.map(company => {
+        if (company.workers.length === 0) {
+          copyState.companies = copyState.companies.filter(comp => comp.id !== action.payload.companyId)
+        }
+        return company;
+      });
       break;
   }
   return copyState;

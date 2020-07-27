@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { addCompany } from "../actions/addCompany";
 import { connect } from "react-redux";
+import { addWorker } from "../actions/addWorker";
 
 class AddWorkerAndCompany extends Component {
 
@@ -14,7 +15,7 @@ class AddWorkerAndCompany extends Component {
             <input type="text" name="inpWorkerName" ref="workerName" placeholder="Nombre del trabajador"></input>
             <input type="text" name="inpWorkerProfession" ref="workerProfessoin" placeholder="Profesión"></input>
             <input type="text" name="inpWorkerSalary" ref="workerSalary" placeholder="Salario"></input>
-            <button>Agregar trabajador</button>
+            <button type="submit">Agregar trabajador</button>
           </form>
         </div>
         <div>
@@ -30,6 +31,7 @@ class AddWorkerAndCompany extends Component {
 
   workerForm(e) {
     e.preventDefault();
+    this.props.registryWorker(this.refs.workerName.value, this.refs.workerProfessoin.value, this.refs.workerSalary.value);
   }
 
   companyForm(e) {
@@ -44,7 +46,8 @@ const propertiesToPropertiesMapper = () => {
 
 const propertiesToDispatchMapper = dispatch => {
   return {
-    callAddCompany: companyName => dispatch(addCompany(companyName))
+    callAddCompany: companyName => dispatch(addCompany(companyName)),
+    registryWorker: (name, profession, salary) => dispatch(addWorker(name, profession, salary))
   }
 }
 

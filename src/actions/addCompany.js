@@ -1,4 +1,6 @@
 import { isEmpty } from "../utils/validators";
+import { getId } from "../utils/maths";
+import { DEFAULT } from "../utils/shared-constants";
 
 export const ADD_COMAPNY = 'ADD_COMPANY';
 
@@ -7,18 +9,13 @@ export const addCompany = companyName => {
     return {
       type: ADD_COMAPNY,
       payload: {
-        id: randomId(),
+        id: getId(),
         company: companyName,
         workers: []
       }
     }
   }
   return {
-    type: 'DEFAULT'
+    type: DEFAULT
   }
-}
-
-const randomId = () => {
-  let output = Math.floor(Math.random() * 1000);
-  return output;
 }
