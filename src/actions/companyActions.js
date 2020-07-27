@@ -5,7 +5,7 @@ import { DEFAULT } from '../utils/shared-constants';
 export const ADD_COMAPANY = 'ADD_COMPANY';
 export const DEL_COMPANY = 'DEL_COMPANY';
 
-export const addCompany = companyName => {
+const asyncAddCompany = companyName => {
   if (!isEmpty(companyName)) {
     return {
       type: ADD_COMAPANY,
@@ -21,11 +21,29 @@ export const addCompany = companyName => {
   }
 }
 
-export const deleteCompany = id => {
+const asyncDeleteCompany = id => {
   return {
     type: DEL_COMPANY,
     payload: {
       companyId: id
     }
   }
+}
+
+export const addCompany = companyName => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncAddCompany(companyName));
+  }
+}
+
+export const deleteCompany = id => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncDeleteCompany(id));
+  }
+}
+
+const executeAsyncTask = (dispatchCallback, callback) => {
+  return setTimeout(() => {
+    dispatchCallback(callback);
+  }, 10);
 }

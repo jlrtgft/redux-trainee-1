@@ -8,7 +8,7 @@ export const ADD_WORKER = 'ADD_WORKER';
 export const REMOVE_WORKER_FROM_COMPANY = 'REMOVE_WORKER_FROM_COMPANIES';
 export const ADD_WORKER_TO_COMPANY = 'ADD_WORKER_TO_COMPANY';
 
-export const addWorker = (workerName, profession, salary) => {
+const asyncAddWorker = (workerName, profession, salary) => {
   if (!isEmpty(workerName) && !isEmpty(profession) && !isEmpty(salary) && isANumber(salary)) {
     return {
       type: ADD_WORKER,
@@ -25,7 +25,7 @@ export const addWorker = (workerName, profession, salary) => {
   }
 }
 
-export const deleteWorker = id => {
+const asyncDeleteWorker = id => {
   return {
     type: DELETE_WORKER,
     payload: {
@@ -34,7 +34,7 @@ export const deleteWorker = id => {
   }
 }
 
-export const removerWorkerFromWorks = (work, worker) => {
+const asyncRemoverWorkerFromWorks = (work, worker) => {
   return {
     type: REMOVE_WORKER_FROM_COMPANY,
     payload: {
@@ -44,7 +44,7 @@ export const removerWorkerFromWorks = (work, worker) => {
   }
 }
 
-export const addToCompany = (companyKey, worker) => {
+const asyncAddToCompany = (companyKey, worker) => {
   return {
     type: ADD_WORKER_TO_COMPANY,
     payload: {
@@ -52,4 +52,34 @@ export const addToCompany = (companyKey, worker) => {
       worker: worker
     }
   }
+}
+
+export const addWorker = (workerName, profession, salary) => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncAddWorker(workerName, profession, salary));
+  }
+}
+
+export const deleteWorker = id => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncDeleteWorker(id));
+  }
+}
+
+export const removerWorkerFromWorks = (company, worker) => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncRemoverWorkerFromWorks(company, worker));
+  }
+}
+
+export const addToCompany = (companyKey, worker) => {
+  return dispatch => {
+    executeAsyncTask(dispatch, asyncAddToCompany(companyKey, worker));
+  }
+}
+
+const executeAsyncTask = (dispatchCallback, callback) => {
+  return setTimeout(() => {
+    dispatchCallback(callback);
+  }, 10);
 }
