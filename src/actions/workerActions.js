@@ -1,12 +1,12 @@
 import { getId } from '../utils/maths';
 import { isEmpty } from '../utils/validators';
 import { DEFAULT } from '../utils/shared-constants';
-import { isANumber } from '../utils/regex';
+import { isANumber } from '../utils/validators';
 
 export const DELETE_WORKER = 'DELETE_WORKER';
 export const ADD_WORKER = 'ADD_WORKER';
 export const REMOVE_WORKER_FROM_COMPANY = 'REMOVE_WORKER_FROM_COMPANIES';
-export const ADD_TO_COMPANY = 'ADD_TO_COMPANY';
+export const ADD_WORKER_TO_COMPANY = 'ADD_WORKER_TO_COMPANY';
 
 export const addWorker = (workerName, profession, salary) => {
   if (!isEmpty(workerName) && !isEmpty(profession) && !isEmpty(salary) && isANumber(salary)) {
@@ -46,7 +46,7 @@ export const removerWorkerFromWorks = (work, worker) => {
 
 export const addToCompany = (companyKey, worker) => {
   return {
-    type: ADD_TO_COMPANY,
+    type: ADD_WORKER_TO_COMPANY,
     payload: {
       companyKey: parseInt(companyKey),
       worker: worker

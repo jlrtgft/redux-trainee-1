@@ -1,4 +1,4 @@
-import { REMOVE_WORKER_FROM_COMPANY, ADD_TO_COMPANY } from '../actions/workerActions';
+import { REMOVE_WORKER_FROM_COMPANY, ADD_WORKER_TO_COMPANY } from '../actions/workerActions';
 import { ADD_COMAPANY } from '../actions/companyActions';
 import { DEL_COMPANY } from '../actions/companyActions';
 
@@ -72,7 +72,7 @@ const companyReducer = (state = initialState, action) => {
         return company;
       })
       break;
-    case ADD_TO_COMPANY:
+    case ADD_WORKER_TO_COMPANY:
       copyState.companies = copyState.companies.map(company => {
         if (company.id === action.payload.companyKey) {
           company.workers = company.workers.concat(action.payload.worker);
@@ -81,7 +81,10 @@ const companyReducer = (state = initialState, action) => {
       })
       break;
     case ADD_COMAPANY:
-      copyState.companies = copyState.companies.concat(action.payload);
+      const companyFound = copyState.companies.find(e => e.company == action.payload);
+      if (companyFound === undefined) {
+        copyState.companies = copyState.companies.concat(action.payload);
+      }
       break;
     case DEL_COMPANY:
       copyState.companies.map(company => {
