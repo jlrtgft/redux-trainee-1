@@ -1,9 +1,9 @@
-export const REMOVE_WORKER_FROM_WORKS = 'REMOVE_WORKER_FROM_WORKS';
+export const REMOVE_WORKER_FROM_COMPANY = 'REMOVE_WORKER_FROM_COMPANIES';
 export const ADD_TO_COMPANY = 'ADD_TO_COMPANY';
 
 export const removerWorkerFromWorks = (work, worker) => {
   return {
-    type: REMOVE_WORKER_FROM_WORKS,
+    type: REMOVE_WORKER_FROM_COMPANY,
     payload: {
       company: work,
       worker: worker

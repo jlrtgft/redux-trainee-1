@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import AvailableWorkers from "./components/AvailableWorkers";
-import Works from "./components/Works";
+import AddWorkerAndCompany from "./components/AddWorkerAndCompany";
+import Companies from "./components/Companies";
 
 class App extends Component {
   render() {
     return (
       <main>
+        <AddWorkerAndCompany />
         <AvailableWorkers />
-        <Works />
+        <Companies />
       </main>
     );
   }

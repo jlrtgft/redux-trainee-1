@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCompany } from '../actions/removeWorkerFromWork';
+import { addToCompany } from '../actions/removeWorkerFromCompany';
 
 class AvailableWorkers extends Component {
 
@@ -53,12 +53,11 @@ class AvailableWorkers extends Component {
       </section >
     );
   }
-  //this.props.callAddToCompany(this.state.value, worker)
 }
 const propertiesToPropertiesMapper = state => {
   return {
     workers: state.workers.workers,
-    companies: state.works.works
+    companies: state.works.companies
   }
 }
 

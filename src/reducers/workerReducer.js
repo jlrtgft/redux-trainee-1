@@ -1,4 +1,4 @@
-import { ADD_TO_COMPANY } from "../actions/removeWorkerFromWork";
+import { ADD_TO_COMPANY, REMOVE_WORKER_FROM_COMPANY } from '../actions/removeWorkerFromCompany';
 
 const initialState = {
   workers: [
@@ -40,6 +40,9 @@ const workerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_COMPANY:
       copyState.workers = state.workers.filter(e => e.id !== action.payload.worker.id);
+      break;
+    case REMOVE_WORKER_FROM_COMPANY:
+      copyState.workers = state.workers.concat(action.payload.worker);
       break;
   }
   return copyState

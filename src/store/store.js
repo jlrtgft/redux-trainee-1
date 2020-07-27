@@ -1,11 +1,10 @@
 import { createStore, combineReducers } from "redux";
 import workerReducer from "../reducers/workerReducer";
-import workReducer from "../reducers/workReducer";
-
+import companyReducer from "../reducers/companyReducer";
 
 const rootReducers = combineReducers({
   workers: workerReducer,
-  works: workReducer
+  works: companyReducer
 });
 
 const store = createStore(rootReducers);
