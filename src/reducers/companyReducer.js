@@ -1,6 +1,6 @@
-import { REMOVE_WORKER_FROM_COMPANY, ADD_TO_COMPANY } from '../actions/removeWorkerFromCompany';
-import { ADD_COMAPNY } from '../actions/addCompany';
-import { DEL_COMPANY } from '../actions/deleteCompany';
+import { REMOVE_WORKER_FROM_COMPANY, ADD_TO_COMPANY } from '../actions/workerActions';
+import { ADD_COMAPANY } from '../actions/companyActions';
+import { DEL_COMPANY } from '../actions/companyActions';
 
 const initialState = {
   'companies': [
@@ -80,7 +80,7 @@ const companyReducer = (state = initialState, action) => {
         return company;
       })
       break;
-    case ADD_COMAPNY:
+    case ADD_COMAPANY:
       copyState.companies = copyState.companies.concat(action.payload);
       break;
     case DEL_COMPANY:

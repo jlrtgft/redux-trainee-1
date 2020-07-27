@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Worker from './Worker';
-import { removerWorkerFromWorks } from '../actions/removeWorkerFromCompany';
-import { deleteCompany } from '../actions/deleteCompany';
+import { removerWorkerFromWorks } from '../actions/workerActions';
+import { deleteCompany } from '../actions/companyActions';
 
 class Companies extends Component {
 

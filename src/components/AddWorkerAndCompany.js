@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { addCompany } from "../actions/addCompany";
+import { addCompany } from "../actions/companyActions";
 import { connect } from "react-redux";
-import { addWorker } from "../actions/addWorker";
+import { addWorker } from "../actions/workerActions";
 
 class AddWorkerAndCompany extends Component {
 

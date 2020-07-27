@@ -1,6 +1,6 @@
-import { ADD_TO_COMPANY, REMOVE_WORKER_FROM_COMPANY } from '../actions/removeWorkerFromCompany';
-import { ADD_WORKER } from '../actions/addWorker';
-import { DELETE_WORKER } from '../actions/deleteWorker';
+import { ADD_TO_COMPANY, REMOVE_WORKER_FROM_COMPANY } from '../actions/workerActions';
+import { ADD_WORKER } from '../actions/workerActions';
+import { DELETE_WORKER } from '../actions/workerActions';
 
 const initialState = {
   workers: [

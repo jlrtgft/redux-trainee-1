@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCompany } from '../actions/removeWorkerFromCompany';
+import { addToCompany } from '../actions/workerActions';
 import Worker from './Worker';
-import { deleteWorker } from '../actions/deleteWorker';
+import { deleteWorker } from '../actions/workerActions';
 
 class AvailableWorkers extends Component {
 
