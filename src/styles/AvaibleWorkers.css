@@ -1,3 +1,12 @@
+.avaibleWorlers-container {
+  background: #13232f;
+}
+
+.avaibleWorlers-container>h2 {
+  color     : white;
+  text-align: center;
+}
+
 .workers-li {
   display        : flex;
   flex-flow      : column nowrap;
@@ -23,8 +32,8 @@
   width        : 25px;
   height       : 25px;
   border-radius: 50%;
-  background   : black;
-  color        : white;
+  background   : white;
+  color        : black;
 }
 
 .delButton:hover {
@@ -46,4 +55,14 @@
 .add-to-company>select,
 button {
   width: 45%;
+}
+
+.add-to-company>select {
+  border-radius: 10px;
+}
+
+.btn-add-to-company {
+  background: #1ab188;
+  color     : white;
+  font-size : 1rem;
 }

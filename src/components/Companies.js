@@ -20,7 +20,7 @@ class Companies extends Component {
                     <div className="container-del">
                       <button onClick={() => { this.props.delCompany(company.id) }} className="delButton">X</button>
                     </div>
-                    <h3>Empresa: {company.company}</h3>
+                    <h3>{company.company}</h3>
                     <div>
                       <p>Trabajadores</p>
                       <ul>
