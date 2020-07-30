@@ -1,13 +1,19 @@
 import { getId } from '../utils/maths';
 import { isEmpty } from '../utils/validators';
-import { DEFAULT } from '../utils/shared-constants';
+import { DEFAULT, LOADING } from '../utils/shared-constants';
 import { isANumber } from '../utils/validators';
 
 export const DELETE_WORKER = 'DELETE_WORKER';
 export const ADD_WORKER = 'ADD_WORKER';
 export const REMOVE_WORKER_FROM_COMPANY = 'REMOVE_WORKER_FROM_COMPANIES';
 export const ADD_WORKER_TO_COMPANY = 'ADD_WORKER_TO_COMPANY';
+export const LOADING_WORKER = 'LOADING_WORKER';
 
+const loading = () => {
+  return {
+    type: LOADING_WORKER
+  }
+}
 const asyncAddWorker = (workerName, profession, salary) => {
   if (!isEmpty(workerName) && !isEmpty(profession) && !isEmpty(salary) && isANumber(salary)) {
     return {
@@ -56,6 +62,7 @@ const asyncAddToCompany = (companyKey, worker) => {
 
 export const addWorker = (workerName, profession, salary) => {
   return dispatch => {
+    dispatch(loading());
     executeAsyncTask(dispatch, asyncAddWorker(workerName, profession, salary));
   }
 }
@@ -81,5 +88,5 @@ export const addToCompany = (companyKey, worker) => {
 const executeAsyncTask = (dispatchCallback, callback) => {
   return setTimeout(() => {
     dispatchCallback(callback);
-  }, 10);
+  }, 1000);
 }

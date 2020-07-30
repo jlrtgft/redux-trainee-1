@@ -72,7 +72,7 @@ class AvailableWorkers extends Component {
 const propertiesToPropertiesMapper = state => {
   return {
     workers: state.workers.workers,
-    companies: state.works.companies
+    companies: state.company.companies
   }
 }
 

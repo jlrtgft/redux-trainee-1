@@ -1,5 +1,5 @@
 import { REMOVE_WORKER_FROM_COMPANY, ADD_WORKER_TO_COMPANY } from '../actions/workerActions';
-import { ADD_COMAPANY } from '../actions/companyActions';
+import { ADD_COMAPANY, LOADING_COMPANY } from '../actions/companyActions';
 import { DEL_COMPANY } from '../actions/companyActions';
 
 const initialState = {
@@ -58,7 +58,8 @@ const initialState = {
         }
       ]
     }
-  ]
+  ],
+  loading: false
 }
 
 const companyReducer = (state = initialState, action) => {
@@ -70,7 +71,8 @@ const companyReducer = (state = initialState, action) => {
           company.workers = company.workers.filter(e => e.id !== action.payload.worker.id);
         }
         return company;
-      })
+      });
+      copyState.loading = false;
       break;
     case ADD_WORKER_TO_COMPANY:
       copyState.companies = copyState.companies.map(company => {
@@ -78,13 +80,15 @@ const companyReducer = (state = initialState, action) => {
           company.workers = company.workers.concat(action.payload.worker);
         }
         return company;
-      })
+      });
+      copyState.loading = false;
       break;
     case ADD_COMAPANY:
-      const companyFound = copyState.companies.find(e => e.company == action.payload);
+      const companyFound = copyState.companies.find(e => e.company == action.payload.company);
       if (companyFound === undefined) {
         copyState.companies = copyState.companies.concat(action.payload);
       }
+      copyState.loading = false;
       break;
     case DEL_COMPANY:
       copyState.companies.map(company => {
@@ -93,6 +97,10 @@ const companyReducer = (state = initialState, action) => {
         }
         return company;
       });
+      copyState.loading = false;
+      break;
+    case LOADING_COMPANY:
+      copyState.loading = true;
       break;
   }
   return copyState;

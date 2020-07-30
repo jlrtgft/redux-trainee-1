@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 const rootReducers = combineReducers({
   workers: workerReducer,
-  works: companyReducer
+  company: companyReducer
 });
 
 const store = createStore(rootReducers, applyMiddleware(thunk));

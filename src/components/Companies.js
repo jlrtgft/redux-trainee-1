@@ -52,7 +52,7 @@ class Companies extends Component {
 
 const propertiesToPropertiesMapper = state => {
   return {
-    companies: state.works.companies
+    companies: state.company.companies
   }
 }
 

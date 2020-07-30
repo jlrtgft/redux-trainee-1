@@ -92,3 +92,14 @@
   border       : 1px solid black;
   border-radius: 0 0 0 5px;
 }
+
+.header {
+  justify-content: center;
+  display        : flex;
+  color          : white;
+}
+
+.loading-logo {
+  animation: App-logo-spin infinite 20s linear;
+  width    : 10%;
+}

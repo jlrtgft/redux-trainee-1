@@ -1,4 +1,4 @@
-import { ADD_WORKER_TO_COMPANY, REMOVE_WORKER_FROM_COMPANY } from '../actions/workerActions';
+import { ADD_WORKER_TO_COMPANY, REMOVE_WORKER_FROM_COMPANY, LOADING_WORKER } from '../actions/workerActions';
 import { ADD_WORKER } from '../actions/workerActions';
 import { DELETE_WORKER } from '../actions/workerActions';
 
@@ -34,7 +34,8 @@ const initialState = {
       'profession': 'Ing. Civil',
       'salary': 6500
     }
-  ]
+  ],
+  loading: false
 }
 
 const workerReducer = (state = initialState, action) => {
@@ -42,18 +43,25 @@ const workerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_WORKER_TO_COMPANY:
       copyState.workers = copyState.workers.filter(e => e.id !== action.payload.worker.id);
+      copyState.loading = false;
       break;
     case REMOVE_WORKER_FROM_COMPANY:
       copyState.workers = copyState.workers.concat(action.payload.worker);
+      copyState.loading = false;
       break;
     case ADD_WORKER:
       const workerFind = copyState.workers.find(e => e.name === action.payload.name);
       if (workerFind === undefined) {
         copyState.workers = copyState.workers.concat(action.payload);
       }
+      copyState.loading = false;
       break;
     case DELETE_WORKER:
-      copyState.workers = copyState.workers.filter(worker => worker.id !== action.payload.workerId)
+      copyState.workers = copyState.workers.filter(worker => worker.id !== action.payload.workerId);
+      copyState.loading = false;
+      break;
+    case LOADING_WORKER:
+      copyState.loading = true;
       break;
   }
   return copyState
