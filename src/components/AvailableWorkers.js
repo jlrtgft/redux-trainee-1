@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addToCompany } from '../actions/workerActions';
 import Worker from './Worker';
 import { deleteWorker } from '../actions/workerActions';
+import '../styles/AvaibleWorkers.css';
 
 class AvailableWorkers extends Component {
 
@@ -32,29 +33,37 @@ class AvailableWorkers extends Component {
 
   render() {
     return (
-      <section>
+      <section className="avaibleWorlers-container">
         <h2>Trabajadores disponibles</h2>
-        <ul>
-          {
-            this.props.workers.map(worker => (
-              <li key={worker.id}>
-                <Worker
-                  name={worker.name}
-                  profession={worker.profession}
-                  salary={worker.salary} />
-                <button onClick={() => this.props.callDeleteWorker(worker.id)}>X</button>
-                <select onChange={this.handleChange}>
-                  {
-                    this.props.companies.map(e => (
-                      <option key={e.id} value={e.id}>{e.company}</option>
-                    ))
-                  }
-                </select>
-                <button onClick={() => this.sendCompany(worker)}>Ok</button>
-              </li>
-            ))
-          }
-        </ul>
+        <section className="workers-li">
+          <ul>
+            {
+              this.props.workers.map(worker => (
+                <li key={worker.id} className="worker">
+                  <div className="container-del">
+                    <button onClick={() => this.props.callDeleteWorker(worker.id)} className="delButton">X</button>
+                  </div>
+                  <div className="workerSection">
+                    <Worker
+                      name={worker.name}
+                      profession={worker.profession}
+                      salary={worker.salary} />
+                    <div className="add-to-company">
+                      <select onChange={this.handleChange}>
+                        {
+                          this.props.companies.map(e => (
+                            <option key={e.id} value={e.id}>{e.company}</option>
+                          ))
+                        }
+                      </select>
+                      <button onClick={() => this.sendCompany(worker)} className="btn-add-to-company">Ok</button>
+                    </div>
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
       </section >
     );
   }

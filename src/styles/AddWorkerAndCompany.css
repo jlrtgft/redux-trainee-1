@@ -1,0 +1,72 @@
+.addWorkerAndCompany-container {
+  display              : grid;
+  grid-template-columns: 1fr;
+  grid-template-areas  : 'row1'
+    'row2'
+    'row3';
+}
+
+.addWorkerForm {
+  display  : flex;
+  flex-flow: column nowrap;
+}
+
+.addWorkerForm>h3 {
+  text-align: center;
+  font-size : 1.3rem;
+}
+
+.inputsContainer {
+  display        : flex;
+  flex-flow      : row nowrap;
+  justify-content: space-around;
+}
+
+.input-dataColors {
+  width        : 30%;
+  border       : 1px solid black;
+  padding      : 5px;
+  border-radius: 5px;
+}
+
+.buttonClass {
+  border       : 1px solid #000;
+  padding      : 5px;
+  width        : 50%;
+  margin-top   : 10px;
+  border-radius: 0 0 0 5px;
+}
+
+.addCompany-container {
+  display  : flex;
+  flex-flow: column nowrap;
+}
+
+.addCompany-container>h3 {
+  text-align: center;
+}
+
+.containerForm {
+  width          : 100%;
+  display        : flex;
+  flex-flow      : row nowrap;
+  justify-content: space-around;
+
+}
+
+.containerForm>input {
+  width: 40%;
+}
+
+.containerForm>button {
+  width: 40%;
+}
+
+.add-to-company {
+  margin-bottom: 10px;
+}
+
+.btn-add-to-company {
+  border       : 1px solid black;
+  border-radius: 0 0 0 5px;
+}

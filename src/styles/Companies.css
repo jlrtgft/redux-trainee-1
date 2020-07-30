@@ -1,0 +1,24 @@
+.companies-container {
+  display  : flex;
+  flex-flow: column nowrap;
+}
+
+article {
+  border    : 1px solid #000;
+  width     : 30%;
+  margin-top: 10px;
+  box-shadow: 10px 5px 5px black;
+  border-top: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.workerContainer {
+  width        : 80%;
+  border       : 1px solid #000;
+  border-top   : none;
+  margin-top   : 10px;
+  margin-bottom: 5px;
+}

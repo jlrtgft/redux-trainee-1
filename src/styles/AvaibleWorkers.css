@@ -1,0 +1,49 @@
+.workers-li {
+  display        : flex;
+  flex-flow      : column nowrap;
+  justify-content: center;
+}
+
+.worker {
+  width        : 40%;
+  height       : 10%;
+  margin-top   : 1%;
+  margin-bottom: 0;
+  display      : flex;
+  flex-flow    : column nowrap;
+}
+
+.container-del {
+  display       : flex;
+  flex-direction: row-reverse;
+}
+
+.delButton {
+  border       : none;
+  width        : 25px;
+  height       : 25px;
+  border-radius: 50%;
+  background   : black;
+  color        : white;
+}
+
+.delButton:hover {
+  cursor: pointer;
+}
+
+.workerSection {
+  border    : 1px solid black;
+  border-top: none;
+  box-shadow: 10px 5px 5px black;
+}
+
+.add-to-company {
+  display        : flex;
+  flex-flow      : row nowrap;
+  justify-content: space-around;
+}
+
+.add-to-company>select,
+button {
+  width: 45%;
+}
